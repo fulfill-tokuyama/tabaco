@@ -347,7 +347,7 @@ async function findSmoking() {
           lat: lat,
           lng: lng,
           range: range,
-          non_smoking: 0,    // 喫煙可
+          non_smoking: 0,
           count: 20,
         });
         if (keyword) params.set('keyword', keyword);
@@ -403,7 +403,6 @@ function renderResults(shops, total) {
     const url    = shop.urls?.pc ?? '#';
     const smoking = shop.non_smoking ?? '';
 
-    // 喫煙ラベル
     const smokingLabel = smoking === '全面禁煙' ? '禁煙'
                        : smoking === '分煙'     ? '分煙'
                        : smoking === '禁煙'     ? '禁煙'
@@ -434,7 +433,6 @@ function esc(str) {
   return String(str ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-// APIキーをlocalStorageに保存/復元
 window.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('hp_api_key');
   if (saved) document.getElementById('apiKeyInput').value = saved;
